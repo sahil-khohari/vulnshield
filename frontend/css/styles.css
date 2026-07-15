@@ -1,0 +1,220 @@
+/* Custom styles for VulnShield */
+
+:root {
+  --background: #0F172A;
+  --surface: #1E293B;
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --accent: #38BDF8;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --critical: #EF4444;
+  --text: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --border: #334155;
+}
+
+/* Transitions for smooth UI animations */
+.vuln-details {
+    transition: all 0.3s ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+.vuln-chevron {
+    transition: transform 0.3s ease;
+}
+
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c5c5c5;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+
+/* Highlight effect for scan types */
+.scan-type-option:hover {
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+.scan-type-option input[type="radio"]:checked + label {
+    font-weight: bold;
+}
+
+/* Fix footer positioning */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto; /* This makes the main content take up all available space */
+}
+
+footer {
+    flex-shrink: 0; /* Prevents the footer from shrinking */
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Improved UI elements */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn {
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Improved form elements */
+input, select, textarea {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent);
+    outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    header .container {
+        flex-direction: column;
+    }
+    
+    header nav {
+        margin-top: 1rem;
+    }
+}
+
+/* Progress bar animation */
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+#progress-bar.scanning {
+    animation: pulse 1.5s infinite;
+}
+
+/* Risk score display enhancements */
+#overall-risk-score {
+    position: relative;
+    z-index: 2;
+}
+
+/* Chart legend tweaks */
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.chart-legend-item {
+    display: flex;
+    align-items: center;
+}
+
+.chart-legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+/* Make vulnerability cards interactive */
+.vuln-header {
+    transition: background-color 0.2s ease;
+}
+
+.vuln-header:hover {
+    background-color: var(--border);
+}
+
+button:focus, 
+input:focus, 
+a:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Animate scan completion */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}
+
+.scan-complete {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Loading animation */
+.loading-spinner {
+    border: 3px solid var(--border);
+    border-radius: 50%;
+    border-top: 3px solid var(--accent);
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
